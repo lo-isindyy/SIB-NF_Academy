@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Luas Bangun Datar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 15px;
+            max-width: 600px;
+        }
+        .container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .hasil {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #eee;
+            border-left: 3px solid #ff6799;
+        }
+        button {
+            background-color: #ffc2d6;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 100%;
+        }
+        h2 {
+            margin-top: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Menghitung Luas Bangun Datar</h2>
+        
+        <button onclick="hitungLuasPersegiPanjang(10, 5)">Persegi Panjang (10 × 5)</button>
+        <button onclick="hitungLuasBujurSangkar(7)">Bujur Sangkar (7 × 7)</button>
+        <button onclick="hitungLuasSegitiga(8, 6)">Segitiga (Alas 8, Tinggi 6)</button>
+        
+        <div id="hasil" class="hasil">
+            Hasil akan ditampilkan di sini...
+        </div>
+    </div>
+
+    <script>
+        // Fungsi menghitung luas persegi panjang
+        // Cara hitung: panjang x lebar
+        function hitungLuasPersegiPanjang(panjang, lebar) {
+            // Hitung luasnya
+            const luas = panjang * lebar;
+            
+            // Tampilkan hasilnya
+            document.getElementById('hasil').innerHTML = `
+                <b>Persegi Panjang</b><br>
+                Panjang = ${panjang}, Lebar = ${lebar}<br>
+                Luas = ${luas} satuan persegi
+            `;
+            
+            return luas;
+        }
+        
+        // Fungsi menghitung luas bujur sangkar
+        // Cara hitung: sisi x sisi
+        function hitungLuasBujurSangkar(sisi) {
+            // Hitung luasnya
+            const luas = sisi * sisi;
+            
+            // Tampilkan hasilnya
+            document.getElementById('hasil').innerHTML = `
+                <b>Bujur Sangkar</b><br>
+                Sisi = ${sisi}<br>
+                Luas = ${luas} satuan persegi
+            `;
+            
+            return luas;
+        }
+        
+        // Fungsi menghitung luas segitiga
+        // Cara hitung: (alas x tinggi) / 2
+        function hitungLuasSegitiga(alas, tinggi) {
+            // Hitung luasnya
+            const luas = (alas * tinggi) / 2;
+            
+            // Tampilkan hasilnya
+            document.getElementById('hasil').innerHTML = `
+                <b>Segitiga</b><br>
+                Alas = ${alas}, Tinggi = ${tinggi}<br>
+                Luas = ${luas} satuan persegi
+            `;
+            
+            return luas;
+        }
+    </script>
+</body>
+</html>
