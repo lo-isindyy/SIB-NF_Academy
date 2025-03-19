@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array & function - Lois</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        button.hapus {
+            background-color: #f44336;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistem Manajemen Toko Online</h1>
+    
+    <div id="messageContainer" class="message"></div>
+    
+    <h2>Tambah Produk Baru</h2>
+    <div class="form-group">
+        <label for="nama">Nama Produk:</label>
+        <input type="text" id="nama" placeholder="Masukkan nama produk">
+    </div>
+    <div class="form-group">
+        <label for="harga">Harga:</label>
+        <input type="number" id="harga" placeholder="Masukkan harga produk">
+    </div>
+    <div class="form-group">
+        <label for="stok">Stok:</label>
+        <input type="number" id="stok" placeholder="Masukkan jumlah stok">
+    </div>
+    <button onclick="tambahProdukClick()">Tambah Produk</button>
+    
+    <h2>Daftar Produk</h2>
+    <table id="tabelProduk">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="daftarProduk"></tbody>
+    </table>
+    
+    <script>
+        const produkToko = [
+            { id: 1, nama: "Laptop", harga: 7000000, stok: 5 },
+            { id: 2, nama: "Mouse", harga: 200000, stok: 10 },
+            { id: 3, nama: "Keyboard", harga: 350000, stok: 7 }
+        ];
+        
+        function tampilkanPesan(pesan, tipe) {
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.textContent = pesan;
+            messageContainer.className = `message ${tipe}`;
+            messageContainer.style.display = 'block';
+        }
+        
+        function tambahProduk(nama, harga, stok) {
+            const idBaru = produkToko.length > 0 ? produkToko[produkToko.length - 1].id + 1 : 1;
+            const produkBaru = { id: idBaru, nama: nama, harga: parseInt(harga), stok: parseInt(stok) };
+            produkToko.push(produkBaru);
+            return produkBaru;
+        }
+        
+        function hapusProduk(id) {
+            const index = produkToko.findIndex(produk => produk.id === id);
+            if (index !== -1) {
+                produkToko.splice(index, 1);
+                return true;
+            }
+            return false;
+        }
+        
+        function tampilkanProduk() {
+            const daftarProduk = document.getElementById('daftarProduk');
+            daftarProduk.innerHTML = '';
+            
+            produkToko.forEach(produk => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${produk.id}</td>
+                    <td>${produk.nama}</td>
+                    <td>Rp ${produk.harga.toLocaleString('id-ID')}</td>
+                    <td>${produk.stok}</td>
+                    <td><button class="hapus" onclick="hapusProdukClick(${produk.id})">Hapus</button></td>
+                `;
+                daftarProduk.appendChild(row);
+            });
+        }
+        
+        // fungsi tombol tambah
+        function tambahProdukClick() {
+            const nama = document.getElementById('nama').value;
+            const harga = document.getElementById('harga').value;
+            const stok = document.getElementById('stok').value;
+            
+            if (!nama || !harga || !stok) {
+                tampilkanPesan('Semua field harus diisi!', 'error');
+                return;
+            }
+            
+            tambahProduk(nama, harga, stok);
+            tampilkanProduk();
+            tampilkanPesan('Produk berhasil ditambahkan!', 'success');
+            
+            // hapus form
+            document.getElementById('nama').value = '';
+            document.getElementById('harga').value = '';
+            document.getElementById('stok').value = '';
+        }
+        
+        // fungsi tombol hapus
+        function hapusProdukClick(id) {
+            if (hapusProduk(id)) {
+                tampilkanProduk();
+                tampilkanPesan('Produk berhasil dihapus!', 'success');
+            } else {
+                tampilkanPesan('Produk tidak ditemukan!', 'error');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            tampilkanProduk();
+        });
+    </script>
+</body>
+</html>
