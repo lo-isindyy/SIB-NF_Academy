@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OOP & DOM - Lois</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 97%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff88ba;
+            color: black;
+            font-weight: bold;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffbed8;
+        }
+        .customer-list {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .customer-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .customer-item:last-child {
+            border-bottom: none;
+        }
+        .empty-list {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Joshushu's Vehicle Rental</h1>
+    
+    <form id="rentalForm">
+        <h2>Form Penyewaan</h2>
+        <div>
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" required>
+        </div>
+        <div>
+            <label for="nomorTelepon">Nomor Telepon:</label>
+            <input type="text" id="nomorTelepon" required>
+        </div>
+        <div>
+            <label for="jenisKendaraan">Jenis Kendaraan:</label>
+            <select id="jenisKendaraan">
+                <option value="Mobil">Mobil</option>
+                <option value="Motor">Motor</option>
+                <option value="Sepeda">Sepeda</option>
+            </select>
+        </div>
+        <button type="submit">SEWA</button>
+    </form>
+    
+    <div>
+        <h2>Daftar Pelanggan</h2>
+        <div id="customerList" class="customer-list">
+            <div class="empty-list">Tidak ada pelanggan yang menyewa kendaraan.</div>
+        </div>
+    </div>
+    
+    <script>
+        class Pelanggan {
+            constructor(nama, nomorTelepon) {
+                this.nama = nama;
+                this.nomorTelepon = nomorTelepon;
+                this.kendaraanDisewa = null;
+            }
+            
+            sewaKendaraan(kendaraan) {
+                this.kendaraanDisewa = kendaraan;
+                daftarPelanggan.push(this);
+                tampilkanDaftarPelanggan();
+                alert(`${this.nama} berhasil menyewa kendaraan ${kendaraan}`);
+            }
+        }
+        
+        let daftarPelanggan = [];
+        
+        function tampilkanDaftarPelanggan() {
+            const customerListElement = document.getElementById('customerList');
+            
+            customerListElement.innerHTML = '';
+            
+            if (daftarPelanggan.length === 0) {
+                const emptyMessage = document.createElement('div');
+                emptyMessage.className = 'empty-list';
+                emptyMessage.textContent = 'Tidak ada pelanggan yang menyewa kendaraan.';
+                customerListElement.appendChild(emptyMessage);
+            } else {
+                daftarPelanggan.forEach((pelanggan, index) => {
+                    const customerItem = document.createElement('div');
+                    customerItem.className = 'customer-item';
+                    customerItem.innerHTML = `
+                        <strong>${index + 1}. ${pelanggan.nama}</strong><br>
+                        Nomor Telepon: ${pelanggan.nomorTelepon}<br>
+                        Kendaraan: ${pelanggan.kendaraanDisewa}
+                    `;
+                    customerListElement.appendChild(customerItem);
+                });
+            }
+        }
+        
+        document.getElementById('rentalForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const nama = document.getElementById('nama').value;
+            const nomorTelepon = document.getElementById('nomorTelepon').value;
+            const jenisKendaraan = document.getElementById('jenisKendaraan').value;
+            
+            if (nama && nomorTelepon) {
+                const pelangganBaru = new Pelanggan(nama, nomorTelepon);
+                pelangganBaru.sewaKendaraan(jenisKendaraan);
+                
+                this.reset();
+            }
+        });
+        
+        let pelanggan1 = new Pelanggan('Lois Indy Pahlevi', '123-456-7890');
+        let pelanggan2 = new Pelanggan('Gita Salsabilla Ike', '987-654-3210');
+
+        pelanggan1.sewaKendaraan('Mobil');
+        pelanggan2.sewaKendaraan('Motor');
+        
+        tampilkanDaftarPelanggan();
+    </script>
+</body>
+</html>
