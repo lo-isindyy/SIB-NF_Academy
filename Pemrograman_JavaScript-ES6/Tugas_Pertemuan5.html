@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event & Advanced - Lois</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000000;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ffc7e3;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, button {
+            padding: 8px;
+            margin-right: 5px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button.delete {
+            background-color: #f44336;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        hr {
+            border: 0;
+            height: 2px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Joshushu's Electronic</h1>
+
+        <hr>
+
+        <div id="formProduk">
+            <h2>Tambah Produk Baru</h2>
+            <div class="form-group">
+                <label for="produkId">ID Produk:</label>
+                <input type="number" id="produkId" placeholder="Masukkan ID produk">
+            </div>
+            <div class="form-group">
+                <label for="produkNama">Nama Produk:</label>
+                <input type="text" id="produkNama" placeholder="Masukkan nama produk">
+            </div>
+            <div class="form-group">
+                <label for="produkHarga">Harga:</label>
+                <input type="number" id="produkHarga" placeholder="Masukkan harga produk">
+            </div>
+            <div class="form-group">
+                <label for="produkStok">Stok:</label>
+                <input type="number" id="produkStok" placeholder="Masukkan jumlah stok">
+            </div>
+            <button id="btnTambah">Tambah Produk</button>
+        </div>
+
+        <hr>
+        
+        <div id="penghapusan">
+            <h2>Hapus Produk</h2>
+            <div class="form-group">
+                <label for="hapusId">ID Produk yang akan dihapus:</label>
+                <input type="number" id="hapusId" placeholder="Masukkan ID produk">
+                <button id="btnHapus" class="delete">Hapus Produk</button>
+            </div>
+        </div>
+
+        <hr>
+        
+        <h2>Daftar Produk</h2>
+        <table id="tabelProduk">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let daftarProduk = [
+            {id: 1, nama: "Laptop", harga: 12000000, stok: 5},
+            {id: 2, nama: "Mouse", harga: 500000, stok: 10},
+            {id: 3, nama: "Keyboard", harga: 800000, stok: 7},
+            {id: 4, nama: "Smartphone", harga: 7000000, stok: 9},
+            {id: 5, nama: "CPU", harga: 3400000, stok: 4}
+        ];
+
+        function getProduct() {
+            console.log("Daftar Produk Tersedia:");
+            // Destructuring
+            daftarProduk.forEach(({id, nama, harga}) => {
+                console.log(`ID: ${id}, Nama: ${nama}, Harga: ${harga}`);
+            });
+        }
+
+        function addProduct(id, nama, harga, stok) {
+            // Spread Operator
+            daftarProduk = [...daftarProduk, {id, nama, harga, stok}];
+            console.log(`Produk baru berhasil ditambahkan: ID: ${id}, Nama: ${nama}, Harga: ${harga}, Stok: ${stok}`);
+        }
+        
+        function hapusProduk(id) {
+            // Rest Parameter
+            const [produkDihapus, ...produkDisimpan] = [
+                daftarProduk.find(p => p.id === id),
+                ...daftarProduk.filter(p => p.id !== id)
+            ];
+            if (!produkDihapus) {
+                console.log(`Produk dengan ID: ${id} tidak ditemukan.`);
+                return false;
+            }
+            console.log(`Produk berhasil dihapus: ID: ${produkDihapus.id}, Nama: ${produkDihapus.nama}`);
+            daftarProduk = produkDisimpan;
+            return true;
+        }
+        
+        function tampilkanDaftarProduk() {
+            const tbody = document.querySelector("#tabelProduk tbody");
+            tbody.innerHTML = "";
+            
+            daftarProduk.forEach(produk => {
+                const row = document.createElement("tr");
+                
+                const idCell = document.createElement("td");
+                idCell.textContent = produk.id;
+                
+                const namaCell = document.createElement("td");
+                namaCell.textContent = produk.nama;
+                
+                const hargaCell = document.createElement("td");
+                hargaCell.textContent = `Rp ${produk.harga.toLocaleString('id-ID')}`;
+                
+                const stokCell = document.createElement("td");
+                stokCell.textContent = produk.stok;
+                
+                const aksiCell = document.createElement("td");
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Hapus";
+                deleteButton.className = "delete";
+                deleteButton.addEventListener("click", function() {
+                    hapusProduk(produk.id);
+                    tampilkanDaftarProduk();
+                });
+                aksiCell.appendChild(deleteButton);
+                
+                row.appendChild(idCell);
+                row.appendChild(namaCell);
+                row.appendChild(hargaCell);
+                row.appendChild(stokCell);
+                row.appendChild(aksiCell);
+                tbody.appendChild(row);
+            });
+        }
+        
+        // Event handler
+        document.getElementById("btnTambah").addEventListener("click", function() {
+            const id = parseInt(document.getElementById("produkId").value);
+            const nama = document.getElementById("produkNama").value;
+            const harga = parseInt(document.getElementById("produkHarga").value);
+            const stok = parseInt(document.getElementById("produkStok").value);
+            
+            if (!id || !nama || !harga || !stok) {
+                alert("Semua field harus diisi!");
+                return;
+            }
+            
+            if (daftarProduk.some(p => p.id === id)) {
+                alert(`Produk dengan ID ${id} sudah ada!`);
+                return;
+            }
+            
+            addProduct(id, nama, harga, stok);
+            tampilkanDaftarProduk();
+            
+            document.getElementById("produkId").value = "";
+            document.getElementById("produkNama").value = "";
+            document.getElementById("produkHarga").value = "";
+            document.getElementById("produkStok").value = "";
+        });
+        
+        // Event handler 2
+        document.getElementById("btnHapus").addEventListener("click", function() {
+            const id = parseInt(document.getElementById("hapusId").value);
+            
+            if (!id) {
+                alert("ID produk harus diisi!");
+                return;
+            }
+            
+            const berhasil = hapusProduk(id);
+            if (berhasil) {
+                tampilkanDaftarProduk();
+                document.getElementById("hapusId").value = "";
+            } else {
+                alert(`Produk dengan ID ${id} tidak ditemukan!`);
+            }
+        });
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            tampilkanDaftarProduk();
+        });
+        
+        getProduct();
+        addProduct(6, "Monitor", 1500000, 12);
+        getProduct();
+    </script>
+</body>
+</html>
