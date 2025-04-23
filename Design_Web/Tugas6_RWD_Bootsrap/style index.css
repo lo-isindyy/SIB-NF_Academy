@@ -1,0 +1,232 @@
+/* Global Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Carousel Styles */
+.carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.carousel-caption {
+    background-color: rgba(255, 105, 180, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Navbar Styles */
+.custom-navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: 2px solid #ff69b4;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #ff69b4;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.navbar-nav .nav-link {
+    color: #ff69b4;
+    font-weight: 600;
+    margin: 0 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #ffe6f2;
+    transform: translateY(-3px);
+}
+
+.btn-login {
+    background-color: #ff69b4;
+    color: white !important;
+}
+
+.btn-login:hover {
+    background-color: #ff1493;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+}
+
+/* Sidebar Styles */
+.sidebar-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ff69b4;
+}
+
+.sidebar-title {
+    color: #ff69b4;
+    border-bottom: 2px solid #ff69b4;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.sidebar-links {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 12px;
+}
+
+.sidebar-links a {
+    color: #666;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.sidebar-links a:hover {
+    background-color: #ffe6f2;
+    color: #ff69b4;
+    transform: translateX(5px);
+}
+
+.sidebar-links i {
+    margin-right: 8px;
+    color: #ff69b4;
+}
+
+/* Main Content Styles */
+.content-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ff69b4;
+    height: 100%;
+}
+
+.content-frame {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
+/* Footer Styles */
+.footer-container {
+    background-color: #fff;
+    border-top: 3px solid #ff69b4;
+    color: #666;
+    padding: 40px 20px 20px;
+    text-align: left;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container h3 {
+    color: #ff69b4;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer-links {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #666;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ff69b4;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffe6f2;
+    color: #ff69b4;
+    text-align: center;
+    line-height: 40px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: #ff69b4;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        margin: 5px 0;
+    }
+    
+    .carousel-item img {
+        height: 300px;
+    }
+    
+    .sidebar-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 250px;
+    }
+    
+    .footer-container h3 {
+        margin-top: 20px;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.custom-navbar, .sidebar-container, .content-container, .footer-container {
+    animation: fadeIn 1s ease-in-out;
+}

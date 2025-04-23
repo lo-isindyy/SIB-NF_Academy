@@ -1,0 +1,122 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    background-image: url(https://i.pinimg.com/736x/0f/cc/76/0fcc76d21baf01221cc9a97fdddcbdbf.jpg);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #cb1177 0%, #ff54b8c4 100%);
+    padding: 30px;
+    border-radius: 10px;
+    color: black;
+}
+
+.section {
+    margin-bottom: 35px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    border-left: 5px solid #fc259b;
+}
+
+h1 {
+    font-family: playwrite Italia Moderna;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h2 {
+    color: #fc259b;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #fc259b;
+}
+
+/* Login Form Styles */
+.login-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-control {
+    border: 2px solid #fc259b;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #cb1168;
+    box-shadow: 0 0 0 0.2rem rgba(252, 37, 137, 0.25);
+}
+
+.form-floating label {
+    color: #cb1168;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #cb1177 0%, #ff54b8c4 100%);
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(203, 17, 119, 0.4);
+}
+
+.icon-wrapper {
+    position: relative;
+}
+
+.icon-wrapper i {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #fc259b;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: #fc259b;
+    border-color: #fc259b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .login-form {
+        padding: 20px;
+    }
+}

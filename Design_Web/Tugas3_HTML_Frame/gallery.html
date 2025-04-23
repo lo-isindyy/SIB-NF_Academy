@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #cb1177 0%, #ff54b8c4 100%);
+            padding: 30px;
+            border-radius: 10px;
+            color: black;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #fc259b;
+        }
+
+        h1 {
+            font-family: playwrite Italia Moderna;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #fc259b;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #fc259b;
+        }
+
+        h4 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #cb1168;
+            padding: 8px;
+            background-color: rgba(252, 37, 137, 0.1);
+            border-radius: 5px;
+        }
+
+        marquee {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        img {
+            margin: 0 10px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My Gallery!</h1>
+            <h4>A precious moment in my life.</h4>
+        </div>
+
+        <div class="section">
+            <div class="info-grid">
+                <marquee behavior="alternate" scrollamount="4">
+                    <img src="gambar10.jpeg">
+                    <img src="gambar2.JPG">
+                    <img src="gambar3.JPG">
+                    <img src="gambar4.JPG">
+                </marquee>
+            
+                <marquee behavior="alternate" scrollamount="4">
+                    <img src="gambar5.JPG">
+                    <img src="gambar6.JPG">
+                    <img src="gambar7.jpeg">
+                    <img src="gambar8.jpeg">
+                </marquee>
+            
+                <marquee behavior="alternate" scrollamount="4">
+                    <img src="gambar9.jpeg">
+                    <img src="gambar1.JPG">
+                    <img src="gambar11.jpg">
+                    <img src="gambar12.jpg">
+                </marquee> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

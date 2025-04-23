@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 7px;
+    background: linear-gradient(to right, #c45772, #ffb8ca);
+    text-align: center;
+}
+
+a {
+    margin: 0 70px;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ffb5ce;
+    text-decoration: underline;
+}

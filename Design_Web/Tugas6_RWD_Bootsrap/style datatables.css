@@ -1,0 +1,118 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url(https://i.pinimg.com/736x/0f/cc/76/0fcc76d21baf01221cc9a97fdddcbdbf.jpg);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #cb1177 0%, #ff54b8 100%);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.page-header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    font-size: 2.2em;
+}
+
+#dataPegawai {
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #fc259b;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+#dataPegawai thead th {
+    background-color: #fc259b;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 15px;
+}
+
+#dataPegawai tbody td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ffcce6;
+}
+
+#dataPegawai tbody tr:nth-child(even) {
+    background-color: #fff5f8;
+}
+
+#dataPegawai tbody tr:hover {
+    background-color: #ffcce6;
+}
+
+#dataPegawai tfoot th {
+    background-color: #ffe6f2;
+    border-top: 2px solid #fc259b;
+    padding: 10px 15px;
+    color: #cb1177;
+}
+
+.dataTables_paginate .paginate_button {
+    border-radius: 5px !important;
+    border: 1px solid #fc259b !important;
+    background: white !important;
+    color: #fc259b !important;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: #ffcce6 !important;
+    color: #cb1177 !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: #fc259b !important;
+    color: white !important;
+    border: 1px solid #fc259b !important;
+}
+
+.dataTables_length select {
+    border: 1px solid #fc259b;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.dataTables_filter input {
+    border: 1px solid #fc259b;
+    border-radius: 5px;
+    padding: 6px 10px;
+}
+
+.dt-buttons {
+    margin-bottom: 15px;
+}
+
+.dt-buttons .dt-button {
+    background: linear-gradient(135deg, #cb1177 0%, #ff54b8 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 8px 15px !important;
+    margin-right: 5px !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.dt-buttons .dt-button:hover {
+    background: linear-gradient(135deg, #a80e61 0%, #d9359a 100%) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+}
