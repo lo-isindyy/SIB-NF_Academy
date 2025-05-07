@@ -30,9 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 0 auto;
             padding: 20px;
         }
+        h1 {
+            text-align: center;
+            font-weight: 800;
+        }
         .hasil {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
+            background-color:rgba(255, 237, 250, 0.84);
+            border: 1px solid rgb(167, 81, 81);
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
@@ -49,24 +53,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         th, td {
             padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid rgb(167, 81, 81);
+            border-top: 1px solid rgb(167, 81, 81);
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #ffc9ef;
+            border-bottom: 2px solid rgb(167, 81, 81);
         }
         .kembali {
             margin-top: 20px;
         }
         .kembali a {
-            background-color: #2196F3;
-            color: white;
+            background-color: #ffc9ef;
+            color: black;
+            font-weight: bold;
             padding: 10px 15px;
             text-decoration: none;
             border-radius: 4px;
             display: inline-block;
         }
         .kembali a:hover {
-            background-color: #0b7dda;
+            background-color: #ff62d0;
         }
     </style>
 </head>
@@ -97,15 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <?php
         if ($status == "Lulus") {
-            echo "<p>Selamat! kamu telah lulus ujian dengan nilai " . htmlspecialchars($nilai) . ".</p>";
+            echo "<p>Selamat! kamu telah lulus ujian dengan nilai " . htmlspecialchars($nilai) . "🤩</p>";
         } else {
-            echo "<p>Maaf, kamu perlu mengikuti remedial karena nilai kamu " . htmlspecialchars($nilai) . " (kurang dari 70).</p>";
+            echo "<p>Maaf, kamu perlu mengikuti remedial karena nilai kamu " . htmlspecialchars($nilai) . " (kurang dari 70)😢</p>";
         }
         ?>
     </div>
     
     <div class="kembali">
-        <a href="form_nilai.html">Kembali ke Form</a>
+        <a href="index.html">Kembali</a>
     </div>
 </body>
 </html>
